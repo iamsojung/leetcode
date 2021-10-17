@@ -9,6 +9,7 @@
  * }
  */
 class Solution {
+    
     public ListNode reverseList(ListNode head) {
         
         ListNode current = head;
@@ -19,11 +20,8 @@ class Solution {
             ListNode nextTemp = current.next;
             current.next = prev;
             prev = current;
-            current = nextTemp;
-            
+            current = nextTemp;            
         }
-        return prev;
-        
-        
+        return prev;          
     }
 }
