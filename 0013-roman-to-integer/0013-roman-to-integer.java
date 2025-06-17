@@ -1,28 +1,19 @@
 class Solution {
-    public int romanToInt(String s) {
-        Map<Character, Integer> map = new HashMap<>(){{
-            put('I', 1);
-            put('V', 5);
-            put('X', 10);
-            put('L', 50);
-            put('C', 100);
-            put('D', 500);
-            put('M', 1000);
-        }};
-
-        int n = s.length();
-        int ans = map.get(s.charAt(n - 1));
-
-        for (int i = n - 2; i >= 0; i--) {
-            char curr = s.charAt(i);
-            char next = s.charAt(i + 1);
-
-             if (map.get(curr) < map.get(next)) {
-                 ans -= map.get(curr);
-             }
-             else ans += map.get(curr);
+ public int romanToInt(String s) {
+         int ans = 0, num = 0;
+        for (int i = s.length()-1; i >= 0; i--) {
+            switch(s.charAt(i)) {
+                case 'I': num = 1; break;
+                case 'V': num = 5; break;
+                case 'X': num = 10; break;
+                case 'L': num = 50; break;
+                case 'C': num = 100; break;
+                case 'D': num = 500; break;
+                case 'M': num = 1000; break;
+            }
+            if (4 * num < ans) ans -= num;
+            else ans += num;
         }
-
         return ans;
     }
 }
